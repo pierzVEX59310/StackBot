@@ -1,3 +1,68 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
+// LeftDump             motor         20              
+// RightDump            motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
+// LeftDump             motor         20              
+// RightDump            motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
+// LeftDump             motor         20              
+// RightDump            motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
+// LeftDump             motor         20              
+// RightDump            motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
+// LeftDump             motor         20              
+// RightDump            motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -104,18 +169,18 @@ void usercontrol(void) {
     tankDrive(Controller1.Axis3.position(percent), Controller1.Axis2.position(percent));
     // Intake Controll //
     if (Controller1.ButtonDown.pressing() && !Controller1.ButtonUp.pressing()) // polls controller
-        intake(50);
+        intake(75);
       else if (!Controller1.ButtonDown.pressing() && Controller1.ButtonUp.pressing())
-        intake(-50);
+        intake(-75);
       else
         intake(0);
     //
 
     // Dump Controll //
-    if (Controller1.ButtonA.pressing() && !Controller1.ButtonX.pressing()) // polls controller
-        dump(50);
-      else if (!Controller1.ButtonA.pressing() && Controller1.ButtonX.pressing())
-        dump(-50);
+    if (Controller1.ButtonB.pressing() && !Controller1.ButtonX.pressing()) // polls controller
+        dump(25);
+      else if (!Controller1.ButtonB.pressing() && Controller1.ButtonX.pressing())
+        dump(-25);
       else
         dump(0);
     //

@@ -1,4 +1,8 @@
 
 *.json
 *.mk
+*.o
+*.elf
+*.map
+*.bin
 **\makefile
