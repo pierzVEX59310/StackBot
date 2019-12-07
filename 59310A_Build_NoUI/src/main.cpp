@@ -1,68 +1,3 @@
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// LeftDump             motor         20              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// LeftDump             motor         20              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// LeftDump             motor         20              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// LeftDump             motor         20              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// LeftDump             motor         20              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -104,6 +39,38 @@ competition Competition;
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit(); //Currently does nothing
+
+    Brain.Screen.drawRectangle(1,1,150,80,color::red);
+    Brain.Screen.printAt(30,50,"Red Auto");
+    Brain.Screen.drawRectangle(150,1,150,80,color::blue);
+    Brain.Screen.printAt(185,50,"Blue Auto");
+    Brain.Screen.drawRectangle(1,80,150,80,color::red);
+    Brain.Screen.printAt(30,125,"Undeclared");
+    Brain.Screen.drawRectangle(150,80,150,80,color::blue);
+    Brain.Screen.printAt(185,125,"Undeclared");
+    Brain.Screen.drawRectangle(300,1,480,240,color::blue);
+    Brain.Screen.printAt(325,25,"Pre-run Stats"); 
+    int Autoset = 0;
+    int Climbset = 0;
+    while(!Competition.isAutonomous() && !Competition.isDriverControl()){
+      if (Brain.Screen.xPosition()>1 && Brain.Screen.yPosition()>1 && Brain.Screen.xPosition()<150 && Brain.Screen.yPosition()<80)
+        { Autoset = 1; }
+      if (Brain.Screen.xPosition()>150 && Brain.Screen.yPosition()>1 && Brain.Screen.xPosition()<300 && Brain.Screen.yPosition()<80)
+        { Autoset = 2; }
+
+      Brain.Screen.printAt(325,50,"Auto is:%d\n", Autoset);    
+        
+      if (Brain.Screen.xPosition()>1 && Brain.Screen.yPosition()>80 && Brain.Screen.xPosition()<150 && Brain.Screen.yPosition()<160)
+        { Climbset = 1; }
+      if (Brain.Screen.xPosition()>150 && Brain.Screen.yPosition()>80 && Brain.Screen.xPosition()<300 && Brain.Screen.yPosition()<160)
+        { Climbset = 0; }    
+        
+      if (Climbset){
+          //Brain.Screen.printAt(325,100,"            ");
+          Brain.Screen.printAt(325,100,"Undeclared ");}
+        else
+          { Brain.Screen.printAt(325,100,"Undeclared");}
+}  
 }
 
 void tankDrive(int leftSpeed, int rightSpeed, int duration = 0, motor FL = FrontLeft, 
