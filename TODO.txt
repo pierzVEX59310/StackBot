@@ -1,5 +1,4 @@
-Reverse appropriate motors
-
-integrate ui code
+add encoder constant
 
 test
+clean up your mess
