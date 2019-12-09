@@ -39,7 +39,7 @@ competition Competition;
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit(); //Currently does nothing
-
+  if (Competition.isFieldControl()||Competition.isCompetitionSwitch()){
     Brain.Screen.drawRectangle(1,1,150,80,color::red);
     Brain.Screen.printAt(30,50,"Red Auto");
     Brain.Screen.drawRectangle(150,1,150,80,color::blue);
@@ -70,7 +70,8 @@ void pre_auton(void) {
           Brain.Screen.printAt(325,100,"Undeclared ");}
         else
           { Brain.Screen.printAt(325,100,"Undeclared");}
-}  
+    }
+  }  
 }
 
 void tankDrive(int leftSpeed, int rightSpeed, int duration = 0, motor FL = FrontLeft, 
