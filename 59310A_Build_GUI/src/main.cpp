@@ -6,6 +6,33 @@
 // FrontRight           motor         3               
 // FrontLeft            motor         9               
 // RearLeft             motor         10              
+// RightDump            motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// Winch                motor         8               
+// LeftDump             motor         20              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
+// RightDump            motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// Winch                motor         8               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
 // LeftDump             motor         20              
 // RightDump            motor         19              
 // RightIntake          motor         11              
@@ -134,6 +161,18 @@ void dump(int speed = 0, motor leftDp = LeftDump, motor rightDp = RightDump){
 
 void autonomous(void) {
 
+FrontLeft.spinFor(-2, turns);
+RearLeft.spinFor(-2, turns);
+FrontRight.spinFor(-2, turns);
+RearRight.spinFor(-2, turns);
+RightDump.spinFor(.9, turns);
+
+vex::task::sleep(1000);
+
+FrontLeft.spinFor(4, turns);
+RearLeft.spinFor(4, turns);
+FrontRight.spinFor(4, turns);
+RearRight.spinFor(4, turns);
 
 
 
