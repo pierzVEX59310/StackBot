@@ -1,3 +1,17 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
+// LeftDump             motor         20              
+// RightDump            motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// Winch                motor         8               
+// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -119,6 +133,11 @@ void dump(int speed = 0, motor leftDp = LeftDump, motor rightDp = RightDump){
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
+
+
+
+
+  
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
@@ -153,6 +172,18 @@ void usercontrol(void) {
         dump(0);
     //
   
+  //Winch Control //
+   Winch.spin(forward, Controller1.ButtonR1.pressing(), pct);
+
+   if (Controller1.ButtonR2.pressing()){
+   
+  Winch.spin(reverse);
+//
+
+
+  
+
+   }
   }
 }
 

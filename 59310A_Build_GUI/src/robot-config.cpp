@@ -17,6 +17,7 @@ motor LeftDump = motor(PORT20, ratio18_1, false);
 motor RightDump = motor(PORT19, ratio18_1, true);
 motor RightIntake = motor(PORT11, ratio18_1, false);
 motor LeftIntake = motor(PORT12, ratio18_1, true);
+motor Winch = motor(PORT8, ratio18_1, false);
 
 // VEXcode generated functions
 
