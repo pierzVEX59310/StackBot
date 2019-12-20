@@ -8,7 +8,7 @@ extern motor RearRight;
 extern motor FrontRight;
 extern motor FrontLeft;
 extern motor RearLeft;
-extern motor RightDump;
+extern motor Dump;
 extern motor RightIntake;
 extern motor LeftIntake;
 extern motor Winch;

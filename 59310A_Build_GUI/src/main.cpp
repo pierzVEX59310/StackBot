@@ -6,6 +6,20 @@
 // FrontRight           motor         3               
 // FrontLeft            motor         9               
 // RearLeft             motor         10              
+// Dump                 motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// Winch                motor         8               
+// LeftDump             motor         20              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
 // RightDump            motor         19              
 // RightIntake          motor         11              
 // LeftIntake           motor         12              
@@ -145,7 +159,7 @@ void intake(int speed = 0, motor leftIn = LeftIntake, motor rightIn = RightIntak
   rightIn.spin(forward);
 }
 
-void dump(int speed = 0, motor leftDp = LeftDump, motor rightDp = RightDump){
+void dump(int speed = 0, motor leftDp = LeftDump, motor rightDp = Dump){
   leftDp.setVelocity(speed,percent);
   rightDp.setVelocity(speed,percent);
   leftDp.spin(forward);
@@ -160,12 +174,17 @@ void dump(int speed = 0, motor leftDp = LeftDump, motor rightDp = RightDump){
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
+Dump.spinFor(2, turns);
 
+vex::task::sleep(10000);
+
+RightIntake.spinFor(2, turns);
+LeftIntake.spinFor(2, turns);
 FrontLeft.spinFor(-2, turns);
 RearLeft.spinFor(-2, turns);
 FrontRight.spinFor(-2, turns);
 RearRight.spinFor(-2, turns);
-RightDump.spinFor(.9, turns);
+Dump.spinFor(.9, turns);
 
 vex::task::sleep(1000);
 
