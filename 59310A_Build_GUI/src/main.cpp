@@ -180,11 +180,14 @@ vex::task::sleep(10000);
 
 RightIntake.spinFor(2, turns);
 LeftIntake.spinFor(2, turns);
+
+vex::task::sleep(10000);
+
+Dump.spinFor(-2, turns);
 FrontLeft.spinFor(-2, turns);
 RearLeft.spinFor(-2, turns);
 FrontRight.spinFor(-2, turns);
 RearRight.spinFor(-2, turns);
-Dump.spinFor(.9, turns);
 
 vex::task::sleep(1000);
 
@@ -193,7 +196,7 @@ RearLeft.spinFor(4, turns);
 FrontRight.spinFor(4, turns);
 RearRight.spinFor(4, turns);
 
-
+vex::task::sleep(1000);
 
   
   // ..........................................................................
@@ -213,37 +216,31 @@ void usercontrol(void) {
                     // prevent wasted resources.
     tankDrive(Controller1.Axis3.position(percent), Controller1.Axis2.position(percent));
     // Intake Controll //
-    if (Controller1.ButtonDown.pressing() && !Controller1.ButtonUp.pressing()) // polls controller
+    if (Controller1.ButtonL1.pressing() && !Controller1.ButtonL2.pressing()) // polls controller
         intake(75);
-      else if (!Controller1.ButtonDown.pressing() && Controller1.ButtonUp.pressing())
+      else if (!Controller1.ButtonL1.pressing() && Controller1.ButtonL2.pressing())
         intake(-75);
       else
         intake(0);
     //
 
     // Dump Controll //
-    if (Controller1.ButtonB.pressing() && !Controller1.ButtonX.pressing()) // polls controller
+    if (Controller1.ButtonR1.pressing() && !Controller1.ButtonR2.pressing()) // polls controller
         dump(25);
-      else if (!Controller1.ButtonB.pressing() && Controller1.ButtonX.pressing())
+      else if (!Controller1.ButtonR1.pressing() && Controller1.ButtonR2.pressing())
         dump(-25);
       else
         dump(0);
     //
   
-  //Winch Control //
-   Winch.spin(forward, Controller1.ButtonR1.pressing(), pct);
-
-   if (Controller1.ButtonR2.pressing()){
-   
-  Winch.spin(reverse);
-//
+  
 
 
   
 
    }
   }
-}
+
 
 //
 // Main will set up the competition functions and callbacks.
