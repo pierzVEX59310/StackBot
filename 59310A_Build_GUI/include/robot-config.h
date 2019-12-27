@@ -12,7 +12,7 @@ extern motor Dump;
 extern motor RightIntake;
 extern motor LeftIntake;
 extern motor Winch;
-extern motor LeftDump;
+extern motor Dump2;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Text.

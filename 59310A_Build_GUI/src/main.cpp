@@ -10,6 +10,20 @@
 // RightIntake          motor         11              
 // LeftIntake           motor         12              
 // Winch                motor         8               
+// Dump2                motor         20              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// RearRight            motor         1               
+// FrontRight           motor         3               
+// FrontLeft            motor         9               
+// RearLeft             motor         10              
+// Dump                 motor         19              
+// RightIntake          motor         11              
+// LeftIntake           motor         12              
+// Winch                motor         8               
 // LeftDump             motor         20              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 // ---- START VEXCODE CONFIGURED DEVICES ----
@@ -159,7 +173,7 @@ void intake(int speed = 0, motor leftIn = LeftIntake, motor rightIn = RightIntak
   rightIn.spin(forward);
 }
 
-void dump(int speed = 0, motor leftDp = LeftDump, motor rightDp = Dump){
+void dump(int speed = 0, motor leftDp = Dump2, motor rightDp = Dump){
   leftDp.setVelocity(speed,percent);
   rightDp.setVelocity(speed,percent);
   leftDp.spin(forward);
@@ -174,28 +188,36 @@ void dump(int speed = 0, motor leftDp = LeftDump, motor rightDp = Dump){
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
+  vex::task::sleep(500);
+
+RightIntake.setVelocity(100, pct);
+LeftIntake.setVelocity(100, pct);
+FrontLeft.setVelocity(100, pct);
+RearLeft.setVelocity(100, pct);
+FrontRight.setVelocity(100, pct);
+RearRight.setVelocity(100, pct);
+
+
+  vex::task::sleep(500);
+
 Dump.spinFor(2, turns);
-
-vex::task::sleep(10000);
-
-RightIntake.spinFor(2, turns);
-LeftIntake.spinFor(2, turns);
-
-vex::task::sleep(10000);
-
-Dump.spinFor(-2, turns);
-FrontLeft.spinFor(-2, turns);
-RearLeft.spinFor(-2, turns);
-FrontRight.spinFor(-2, turns);
-RearRight.spinFor(-2, turns);
 
 vex::task::sleep(1000);
 
-FrontLeft.spinFor(4, turns);
-RearLeft.spinFor(4, turns);
-FrontRight.spinFor(4, turns);
-RearRight.spinFor(4, turns);
+RightIntake.spinFor(-2, turns);
+LeftIntake.spinFor(-2, turns);
 
+vex::task::sleep(1000);
+
+Dump.spinFor(-2, turns);
+{FrontLeft.spinFor(-2, turns);
+RearLeft.spinFor(-2, turns);
+FrontRight.spinFor(-2, turns);
+RearRight.spinFor(-2, turns);}
+
+vex::task::sleep(1000);
+
+{FrontLeft.spinFor(4, turns), RearLeft.spinFor(4, turns), FrontRight.spinFor(4, turns), RearRight.spinFor(4, turns);}
 vex::task::sleep(1000);
 
   
@@ -216,24 +238,25 @@ void usercontrol(void) {
                     // prevent wasted resources.
     tankDrive(Controller1.Axis3.position(percent), Controller1.Axis2.position(percent));
     // Intake Controll //
-    if (Controller1.ButtonL1.pressing() && !Controller1.ButtonL2.pressing()) // polls controller
+    if (!Controller1.ButtonL1.pressing() && Controller1.ButtonL2.pressing()) // polls controller
         intake(75);
-      else if (!Controller1.ButtonL1.pressing() && Controller1.ButtonL2.pressing())
+      else if (Controller1.ButtonL1.pressing() && !Controller1.ButtonL2.pressing())
         intake(-75);
       else
         intake(0);
     //
 
-    // Dump Controll //
-    if (Controller1.ButtonR1.pressing() && !Controller1.ButtonR2.pressing()) // polls controller
+    // Dump Control //
+    if (!Controller1.ButtonR1.pressing() && Controller1.ButtonR2.pressing()) // polls controller
         dump(25);
-      else if (!Controller1.ButtonR1.pressing() && Controller1.ButtonR2.pressing())
+      else if (Controller1.ButtonR1.pressing() && !Controller1.ButtonR2.pressing())
         dump(-25);
       else
         dump(0);
-    //
+    
   
   
+
 
 
   
