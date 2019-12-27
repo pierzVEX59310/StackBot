@@ -200,7 +200,7 @@ RearRight.setVelocity(100, pct);
 
   vex::task::sleep(500);
 
-Dump.spinFor(2, turns);
+Dump.rotateFor(2, turns);
 
 vex::task::sleep(1000);
 
@@ -217,7 +217,11 @@ RearRight.spinFor(-2, turns);}
 
 vex::task::sleep(1000);
 
-{FrontLeft.spinFor(4, turns), RearLeft.spinFor(4, turns), FrontRight.spinFor(4, turns), RearRight.spinFor(4, turns);}
+FrontLeft.spinFor(4, turns);
+RearLeft.spinFor(4, turns);
+FrontRight.spinFor(4, turns);
+RearRight.spinFor(4, turns);
+
 vex::task::sleep(1000);
 
   
