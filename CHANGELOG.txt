@@ -1,0 +1,10 @@
+Warning!
+
+This code is an untested branch on the repository. The changes are documented and the master branch is unchanged.
+Remember to switch branches to deploy code from the master branch.
+
+Again, this code has not been tested on a physical device. The code is without syntax errors but may contain opperational
+bugs.
+
+TEST BEFORE USING IN COMPETITION!!!
+

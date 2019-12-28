@@ -12,61 +12,7 @@
 // Winch                motor         8               
 // Dump2                motor         20              
 // ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// Dump                 motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// Winch                motor         8               
-// LeftDump             motor         20              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// Winch                motor         8               
-// LeftDump             motor         20              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// Winch                motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         3               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// LeftDump             motor         20              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// Winch                motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
+
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -77,19 +23,6 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// RearRight            motor         1               
-// FrontRight           motor         2               
-// FrontLeft            motor         9               
-// RearLeft             motor         10              
-// LeftDump             motor         20              
-// RightDump            motor         19              
-// RightIntake          motor         11              
-// LeftIntake           motor         12              
-// ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
 
@@ -180,8 +113,18 @@ void dump(int speed = 0, motor leftDp = Dump2, motor rightDp = Dump){
   rightDp.spin(forward);
 }
 
+/*void EncodedDrive(int LeftDist, int RightDist, bool waitForCompletion = false){ // Uses a 13in:1rev constant & assumes velocity is set
+  int k = 13;
+  FrontLeft.rotateFor(LeftDist/k, rev, waitForCompletion);
+  RearLeft.rotateFor(LeftDist/k, rev, waitForCompletion);
+  FrontRight.rotateFor(RightDist/k, rev, waitForCompletion);
+  RearRight.rotateFor(RightDist/k, rev, true); //moves wheels, no multisystem tasking this way
+  // change to waitForCompletetion to enable multitasking systems
+}*/
+/*/////////////////
+use for precision drive commands, likely uneccessary
 
-
+*/////////////
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*                              Autonomous Function                          */
@@ -204,31 +147,27 @@ Dump.rotateFor(2, turns);
 
 vex::task::sleep(1000);
 
-RightIntake.spinFor(-2, turns);
+RightIntake.spinFor(-2, turns, false); //changed to false to work in tandem
 LeftIntake.spinFor(-2, turns);
 
 vex::task::sleep(1000);
 
 Dump.spinFor(-2, turns);
-{FrontLeft.spinFor(-2, turns);
-RearLeft.spinFor(-2, turns);
-FrontRight.spinFor(-2, turns);
-RearRight.spinFor(-2, turns);}
+
+FrontLeft.spinFor(-2, turns,false);
+RearLeft.spinFor(-2, turns,false);
+FrontRight.spinFor(-2, turns,false);
+RearRight.spinFor(-2, turns); //change all except last to false to prevent blocking
 
 vex::task::sleep(1000);
 
-FrontLeft.spinFor(4, turns);
-RearLeft.spinFor(4, turns);
-FrontRight.spinFor(4, turns);
+FrontLeft.spinFor(4, turns, false);
+RearLeft.spinFor(4, turns, false);
+FrontRight.spinFor(4, turns, false);
 RearRight.spinFor(4, turns);
 
 vex::task::sleep(1000);
-
-  
-  // ..........................................................................
-  // Insert autonomous user code here.
-  // ..........................................................................
-}
+}// End Of Aton
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
